@@ -22,6 +22,14 @@ See all the logs when initializing an image:
 
     sudo docker compose logs <image> -f
 
+Create, delete or describe topics in Redpanda: 
+
+    sudo docker exec -it <redpanda-container-name> rpk topic create <topic-name>
+
+    sudo docker exec -it <redpanda-container-name> rpk topic delete <topic-name>
+
+    sudo docker exec -it <redpanda-container-name> rpk topic describe -a <topic-name>
+
 To use a dependency/packages without installing it we can use uvx: 
 
     uvx pgcli -h localhost -p 5432 -U postgres -d postgres
@@ -63,4 +71,3 @@ Executing a Flink job:
     docker compose exec jobmanager ./bin/flink run \
     -py /opt/src/job/aggregation_job.py \
     --pyFiles /opt/src -d
-
